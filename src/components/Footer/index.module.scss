@@ -1,0 +1,12 @@
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 30px;
+  color: rgba(0, 0, 0, 0.6);
+  user-select: none;
+  pointer-events: none;
+  cursor: default;
+}

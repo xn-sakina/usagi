@@ -1,0 +1,139 @@
+.wrapper {
+  $padding: 20px;
+
+  padding: $padding;
+  padding-top: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: calc(100vh - 41px - 100px - $padding);
+}
+
+.btn {
+  &_line {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-top: 10px;
+  }
+
+  & + & {
+    margin-left: 10px;
+  }
+}
+
+.no_imgs {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.imgs {
+  margin: 5px 0 10px 0;
+
+  &_box {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px 10px;
+
+    &_box_sticky {
+      box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  &_preview {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      flex-shrink: 0;
+  }
+}
+
+.preview {
+  $size: 80px;
+  $loading-size: $size;
+
+  width: $size;
+  height: $size;
+
+  overflow: hidden;
+
+  :global {
+    img {
+      max-width: 100%;
+    }
+  }
+
+  &_loading {
+    width: $loading-size;
+    height: $loading-size;
+
+    :global {
+      .arco-skeleton-image {
+        width: $loading-size;
+        height: $loading-size;
+      }
+    }
+
+    & + & {
+      margin-left: 20px;
+    }
+  }
+
+  & + & {
+    margin-left: 20px;
+  }
+}
+
+.j_cropper {
+  :global {
+    .cropper-point.point-se {
+      $size: 10px;
+
+      width: $size;
+      height: $size;
+    }
+  }
+}
+
+.result {
+  :global {
+    max-width: 100%;
+  }
+}
+
+.can_not_save {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cropper_box {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.scroll_area {
+  width: calc(10vw - 20px);
+  margin-left: 10px;
+  writing-mode: tb;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 450;
+  letter-spacing: 1px;
+}
+
+.center_loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+}
