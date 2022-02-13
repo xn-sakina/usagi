@@ -1,8 +1,8 @@
 # USAGI
 
-Easy avatar image cropper and previewer for SNS
+Easy avatar image cropper and previewer for SNS on mobile
 
-**Recommended for mobile**
+**Recommended usage on mobile**
 
 ### Usage
 
