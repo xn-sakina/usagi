@@ -216,7 +216,7 @@ export const Home: React.FC = () => {
                       </div>
                       <div
                         className={styles.preview}
-                        style={{ borderRadius: 16 }}
+                        style={{ borderRadius: 13 }}
                       >
                         <img src={result} />
                       </div>
