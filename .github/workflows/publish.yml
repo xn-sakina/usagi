@@ -31,7 +31,7 @@ jobs:
       - name: Build
         run: |
           pnpm build
-          cp index.html 404.html
+          cp public/index.html public/404.html
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.3
