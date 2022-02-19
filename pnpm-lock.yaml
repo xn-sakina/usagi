@@ -15,6 +15,7 @@ specifiers:
   cropperjs: ^1.5.12
   eslint: ^8.9.0
   file-saver: ^2.0.5
+  framer-motion: ^6.2.6
   lodash-es: ^4.17.21
   normalize.css: ^8.0.1
   react: ^17.0.2
@@ -30,6 +31,7 @@ dependencies:
   classnames: 2.3.1
   cropperjs: 1.5.12
   file-saver: 2.0.5
+  framer-motion: 6.2.6_react-dom@17.0.2+react@17.0.2
   lodash-es: 4.17.21
   normalize.css: 8.0.1
   react: 17.0.2
@@ -1432,6 +1434,19 @@ packages:
     resolution: {integrity: sha512-ws57AidsDvREKrZKYffXddNkyaF14iHNHm8VQnZH6t99E8gczjNN0GpvcGny0imC80yQ0tHz1xVUKk/KFQSUyA==}
     engines: {node: '>=10.0.0'}
     dev: true
+
+  /@emotion/is-prop-valid/0.8.8:
+    resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==}
+    requiresBuild: true
+    dependencies:
+      '@emotion/memoize': 0.7.4
+    dev: false
+    optional: true
+
+  /@emotion/memoize/0.7.4:
+    resolution: {integrity: sha1-Gb8PWvGRSREcQNmLsM+CEZ9dnus=, tarball: '@emotion/memoize/download/@emotion/memoize-0.7.4.tgz'}
+    dev: false
+    optional: true
 
   /@eslint/eslintrc/1.1.0:
     resolution: {integrity: sha512-C1DfL7XX4nPqGd6jcP01W9pVM1HYCuUkFk1432D7F0v3JSlUIeOYn9oCoi3eoLZ+iwBSb29BMFxxny0YrrEZqg==}
@@ -4862,6 +4877,29 @@ packages:
     resolution: {integrity: sha512-pUHWWt6vHzZZiQJcM6S/0PXfS+g6FM4BF5rj9wZyreivhQPdsh5PpE25VtSNxq80wHS5RfY51Ii+8Z0Zl/pmzg==}
     dev: true
 
+  /framer-motion/6.2.6_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-7eGav5MxEEzDHozQTDY6+psTIOw2i2kM1QVoJOC3bCp9VOKoo+mKR5n7aT5JPh7ksEKFYJYz0GJDils/9S+oLA==}
+    peerDependencies:
+      react: '>=16.8 || ^17.0.0 || ^18.0.0'
+      react-dom: '>=16.8 || ^17.0.0 || ^18.0.0'
+    dependencies:
+      framesync: 6.0.1
+      hey-listen: 1.0.8
+      popmotion: 11.0.3
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      style-value-types: 5.0.0
+      tslib: 2.3.1
+    optionalDependencies:
+      '@emotion/is-prop-valid': 0.8.8
+    dev: false
+
+  /framesync/6.0.1:
+    resolution: {integrity: sha1-XjL8AfHEKznGVMNbFkQOB6JdbyA=, tarball: framesync/download/framesync-6.0.1.tgz}
+    dependencies:
+      tslib: 2.3.1
+    dev: false
+
   /fresh/0.5.2:
     resolution: {integrity: sha512-zJ2mQYM18rEFOudeV4GShTGIQ7RbzA7ozbU9I/XBpm7kqgMywgmylMwXHxZJmkVoYkna9d2pVXVXPdYTP9ej8Q==}
     engines: {node: '>= 0.6'}
@@ -5091,6 +5129,10 @@ packages:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
     hasBin: true
     dev: true
+
+  /hey-listen/1.0.8:
+    resolution: {integrity: sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==}
+    dev: false
 
   /history/5.2.0:
     resolution: {integrity: sha512-uPSF6lAJb3nSePJ43hN3eKj1dTWpN9gMod0ZssbFTIsen+WehTmEadgL+kg78xLJFdRfrrC//SavDzmRVdE+Ig==}
@@ -6376,6 +6418,15 @@ packages:
     dependencies:
       find-up: 3.0.0
     dev: true
+
+  /popmotion/11.0.3:
+    resolution: {integrity: sha512-Y55FLdj3UxkR7Vl3s7Qr4e9m0onSnP8W7d/xQLsoJM40vs6UKHFdygs6SWryasTZYqugMjm3BepCF4CWXDiHgA==, tarball: popmotion/download/popmotion-11.0.3.tgz}
+    dependencies:
+      framesync: 6.0.1
+      hey-listen: 1.0.8
+      style-value-types: 5.0.0
+      tslib: 2.3.1
+    dev: false
 
   /portfinder/1.0.28:
     resolution: {integrity: sha512-Se+2isanIcEqf2XMHjyUKskczxbPH7dQnlMjXX6+dybayyHvAf/TCgyMRlzf/B6QDhAEFOGes0pzRo3by4AbMA==}
@@ -8038,6 +8089,13 @@ packages:
     dependencies:
       webpack: 5.69.1_c76aa099756db29dd3141dc8c7ce72b1
     dev: true
+
+  /style-value-types/5.0.0:
+    resolution: {integrity: sha1-dsNfDleYQ9UjGHmJ2oZnKUEfyK0=, tarball: style-value-types/download/style-value-types-5.0.0.tgz}
+    dependencies:
+      hey-listen: 1.0.8
+      tslib: 2.3.1
+    dev: false
 
   /stylehacks/5.0.3_postcss@8.4.6:
     resolution: {integrity: sha512-ENcUdpf4yO0E1rubu8rkxI+JGQk4CgjchynZ4bDBJDfqdy+uhTRSWb8/F3Jtu+Bw5MW45Po3/aQGeIyyxgQtxg==}

@@ -145,3 +145,61 @@
     width: 100%;
     height: 300px;
 }
+
+.opera_bar {
+
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.15);
+  cursor: default;
+  user-select: none;
+  padding: 5px 3px 5px 3px;
+
+  position: fixed;
+  right: 0;
+  top: 50px;
+
+  &_icon {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    font-weight: bold;
+  }
+
+  &_area {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  &_btn {
+    color: rgba(0, 0, 0, .8) !important;
+
+    &[disabled] {
+      color: rgba(0, 0, 0, .4) !important;
+    }
+  }
+
+  &_direction {
+    &_x {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
+
+    &_y {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

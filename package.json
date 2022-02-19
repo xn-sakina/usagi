@@ -14,6 +14,7 @@
     "classnames": "^2.3.1",
     "cropperjs": "^1.5.12",
     "file-saver": "^2.0.5",
+    "framer-motion": "^6.2.6",
     "lodash-es": "^4.17.21",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",

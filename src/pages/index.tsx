@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useCallback, useMemo, useRef, useState } from 'react'
 import {
   Typography,
   Grid,
@@ -23,11 +23,23 @@ import cx from 'classnames'
 import { IImageInfo } from './interface'
 import { downloadFile } from '@/utils/file'
 import { base64ToUrl } from '@/utils/transform'
-import { IconPlus, IconDelete, IconDownload } from '@arco-design/web-react/icon'
+import {
+  IconPlus,
+  IconDelete,
+  IconDownload,
+  IconLeft,
+  IconUpCircle,
+  IconDownCircle,
+  IconRightCircle,
+  IconLeftCircle,
+  IconRight,
+} from '@arco-design/web-react/icon'
 import { Footer } from '@/components/Footer'
 import { Title } from '@/components/Title'
+import { motion } from 'framer-motion'
 
 const WIDTH = '90%'
+const MOVE_LEVEL = 2
 
 export const Home: React.FC = () => {
   // base
@@ -47,6 +59,9 @@ export const Home: React.FC = () => {
 
   // status
   const isDisabledSelectImage = Boolean(src.length)
+
+  // opera bar
+  const [isOperaBarOpen, setIsOperaBarOpen] = useState(false)
 
   const onUpload = async (file: File) => {
     setLoading(true)
@@ -80,6 +95,7 @@ export const Home: React.FC = () => {
     setLoading(false)
     setCropperHeight(undefined)
     setResult('')
+    setIsOperaBarOpen(false)
   }
 
   const [visible, setVisible] = useState(false)
@@ -88,12 +104,12 @@ export const Home: React.FC = () => {
   }
 
   // cropper
-  const cropperRef = useRef<any>()
+  const cropperRef = useRef<{ cropper: CropperIns }>()
   const onCrop = () => {
     setIsCropping(true)
     try {
-      const imageElement: any = cropperRef?.current
-      const cropper = imageElement?.cropper as CropperIns | undefined
+      const imageElement = cropperRef?.current
+      const cropper = imageElement?.cropper
       const base64 = cropper?.getCroppedCanvas().toDataURL(imgInfo?.type, 92)
       if (base64?.length) {
         setResult(base64)
@@ -110,11 +126,18 @@ export const Home: React.FC = () => {
     debounceCrop()
   }
 
+  const moveImage = ({ x = 0, y = 0 }: { x?: number; y?: number }) => {
+    const imgElm = cropperRef.current
+    const cropper = imgElm?.cropper
+    if (cropper) {
+      cropper.move?.(x, y)
+    }
+  }
+
   // download
   const onDownloadResult = async () => {
     Message.info('Downloading...')
     const url = await base64ToUrl(result)
-    console.log('imgInfo: ', imgInfo)
     downloadFile({ url, filename: imgInfo?.filename, type: imgInfo?.type })
   }
 
@@ -240,7 +263,7 @@ export const Home: React.FC = () => {
                       aspectRatio={1 / 1}
                       guides={false}
                       crop={cropWrapper}
-                      ref={cropperRef}
+                      ref={cropperRef as any}
                       className={styles.j_cropper}
                     />
                     <Alert
@@ -296,6 +319,83 @@ export const Home: React.FC = () => {
         </div>
 
         <Footer />
+      </div>
+
+      <div className={styles.opera_bar}>
+        <div className={styles.opera_bar_icon}>
+          <Button
+            className={styles.opera_bar_btn}
+            type="text"
+            shape="circle"
+            size="small"
+            onClick={() => {
+              setIsOperaBarOpen((pre) => !pre)
+            }}
+            icon={isOperaBarOpen ? <IconRight /> : <IconLeft />}
+          />
+        </div>
+        <motion.div
+          className={styles.opera_bar_area}
+          initial={{ width: 0, opacity: 0 }}
+          animate={{
+            width: isOperaBarOpen ? 70 : 0,
+            opacity: isOperaBarOpen ? 1 : 0,
+            transition: {
+              type: 'just',
+            },
+          }}
+        >
+          <div className={styles.opera_bar_direction_y}>
+            <Button
+              className={styles.opera_bar_btn}
+              type="text"
+              shape="circle"
+              size="small"
+              icon={<IconUpCircle />}
+              onClick={() => {
+                moveImage({ y: -1 * MOVE_LEVEL })
+              }}
+              disabled={!isDisabledSelectImage}
+            />
+          </div>
+          <div className={styles.opera_bar_direction_x}>
+            <Button
+              className={styles.opera_bar_btn}
+              type="text"
+              shape="circle"
+              size="small"
+              icon={<IconLeftCircle />}
+              disabled={!isDisabledSelectImage}
+              onClick={() => {
+                moveImage({ x: -1 * MOVE_LEVEL })
+              }}
+            />
+            <Button
+              className={styles.opera_bar_btn}
+              type="text"
+              shape="circle"
+              size="small"
+              icon={<IconRightCircle />}
+              disabled={!isDisabledSelectImage}
+              onClick={() => {
+                moveImage({ x: MOVE_LEVEL })
+              }}
+            />
+          </div>
+          <div className={styles.opera_bar_direction_y}>
+            <Button
+              className={styles.opera_bar_btn}
+              type="text"
+              shape="circle"
+              size="small"
+              icon={<IconDownCircle />}
+              disabled={!isDisabledSelectImage}
+              onClick={() => {
+                moveImage({ y: MOVE_LEVEL })
+              }}
+            />
+          </div>
+        </motion.div>
       </div>
     </div>
   )
