@@ -42,6 +42,7 @@
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     padding: 10px 10px;
+    user-select: none;
 
     &_box_sticky {
       box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.15);
@@ -118,6 +119,7 @@
 .cropper_box {
     display: flex;
     flex-wrap: nowrap;
+    user-select: none;
 }
 
 .none {
@@ -202,4 +204,9 @@
       justify-content: center;
     }
   }
+}
+
+.crop_title {
+  user-select: none !important;
+  pointer-events: none;
 }

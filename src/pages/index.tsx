@@ -196,7 +196,9 @@ export const Home: React.FC = () => {
 
           <Divider />
 
-          <Typography.Title heading={6}>Crop Image</Typography.Title>
+          <Typography.Title heading={6} className={styles.crop_title}>
+            Crop Image
+          </Typography.Title>
 
           <div style={{ width: WIDTH }} ref={sizeObserverRef}></div>
 
@@ -204,6 +206,7 @@ export const Home: React.FC = () => {
             className={styles.imgs}
             style={{
               display: !cropperHeight ? 'none' : undefined,
+              userSelect: 'none',
             }}
           >
             <Affix offsetTop={0} onChange={setSticky}>
