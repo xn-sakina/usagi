@@ -120,6 +120,12 @@
     flex-wrap: nowrap;
 }
 
+.none {
+  pointer-events: none;
+  user-select: none;
+  cursor: default;
+}
+
 .scroll_area {
   width: calc(10vw - 20px);
   margin-left: 10px;
@@ -128,6 +134,8 @@
   font-size: 16px;
   font-weight: 450;
   letter-spacing: 1px;
+
+  @extend .none;
 }
 
 .center_loading {
