@@ -8,13 +8,13 @@
     "fix": "prettier -c --write \"src/**/*.{ts,tsx}\""
   },
   "dependencies": {
-    "@arco-design/web-react": "^2.29.1",
+    "@arco-design/web-react": "^2.29.2",
     "@types/lodash-es": "^4.17.6",
-    "ahooks": "^3.1.9",
+    "ahooks": "^3.1.10",
     "classnames": "^2.3.1",
     "cropperjs": "^1.5.12",
     "file-saver": "^2.0.5",
-    "framer-motion": "^6.2.6",
+    "framer-motion": "^6.2.8",
     "lodash-es": "^4.17.21",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
@@ -29,8 +29,8 @@
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "@types/react-router-dom": "^5.3.3",
-    "@xn-sakina/meta": "^1.1.6",
-    "eslint": "^8.9.0",
+    "@xn-sakina/meta": "^1.2.2",
+    "eslint": "^8.10.0",
     "typescript": "^4.5.5"
   }
 }
