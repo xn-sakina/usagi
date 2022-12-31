@@ -130,7 +130,7 @@
 }
 
 .scroll_area {
-  width: calc(calc(100vw - 40px) / 10) !important;
+  width: calc(calc(calc(100vw - 40px) / 10) - 10px) !important;
   margin-left: 10px;
   writing-mode: tb;
   text-align: center !important;

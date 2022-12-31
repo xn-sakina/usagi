@@ -78,7 +78,7 @@ export const Home: React.FC = () => {
       }
 
       const cropperExceptWidth = isNumber(observerSize?.width)
-        ? (observerSize!.width / size.width) * size.height - 5
+        ? (observerSize!.width / size.width) * size.height
         : 500
 
       // save info
