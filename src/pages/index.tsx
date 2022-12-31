@@ -41,7 +41,7 @@ import { motion } from 'framer-motion'
 import { AddCircle } from './AddCircle'
 import { styled } from 'styled-components'
 
-const WIDTH = '90%'
+const WIDTH = 'calc(var(--base-view) * 0.9)'
 const MOVE_LEVEL = 2
 
 export const Home: React.FC = () => {
@@ -78,6 +78,8 @@ export const Home: React.FC = () => {
       }
 
       const cropperExceptWidth = isNumber(observerSize?.width)
+       // fixme: scroll bar width will affect the calculation
+       //        in pc, the result is not accurate
         ? (observerSize!.width / size.width) * size.height
         : 500
 
@@ -148,7 +150,8 @@ export const Home: React.FC = () => {
   const [circleModalVisible, setCircleModalVisible] = useState(false)
 
   return (
-    <div>
+    // @ts-expect-error
+    <div style={{ '--base-view': 'calc(100vw - 40px - 10px)' }}>
       <Title />
 
       <Divider />
