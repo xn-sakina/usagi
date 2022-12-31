@@ -73,13 +73,13 @@
   }
 
   &_loading {
-    width: $loading-size;
-    height: $loading-size;
+    width: $loading-size !important;
+    height: $loading-size !important;
 
     :global {
       .arco-skeleton-image {
-        width: $loading-size;
-        height: $loading-size;
+        width: $loading-size !important;
+        height: $loading-size !important;
       }
     }
 
