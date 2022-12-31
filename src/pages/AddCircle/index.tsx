@@ -10,7 +10,7 @@ import {
   Spin,
 } from '@arco-design/web-react'
 import { useDeepCompareEffect, useDebounceFn } from 'ahooks'
-import { HexAlphaColorPicker } from "react-colorful";
+import { HexAlphaColorPicker } from 'react-colorful'
 
 const DEFAULT_OUTPUT_SIZE = 600
 const DEFAULT_CANVAS_SIZE = DEFAULT_OUTPUT_SIZE
@@ -46,7 +46,7 @@ export function AddCircle({ imageBase64 }: IAddCircleProps) {
     <Box>
       <MultiLines>
         <Form name="add-circle-form">
-          <Form.Item label='Color'>
+          <Form.Item label="Color">
             <ColorPicker
               value={drawData.color}
               onChange={(newColor) => {
@@ -171,7 +171,11 @@ function DrawElement({
   }, [drawData, imageUrl])
 
   if (!previewUrl?.length || !imageUrl?.length) {
-    return <PreviewNone>Preview None</PreviewNone>
+    return (
+      <PreviewNone>
+        <Spin loading />
+      </PreviewNone>
+    )
   }
 
   return (
@@ -197,10 +201,11 @@ const Preview = styled.div`
 `
 
 const PreviewNone = styled.div`
-  text-align: center;
-  width: 100%;
-  padding: 3px 0;
-  color: rgba(0, 0, 0, 0.4);
+  width: 70%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 const Box = styled.div`
