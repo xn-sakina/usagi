@@ -117,9 +117,10 @@
 }
 
 .cropper_box {
-    display: flex;
-    flex-wrap: nowrap;
-    user-select: none;
+  display: flex;
+  flex-wrap: nowrap;
+  user-select: none;
+  flex-shrink: 0;
 }
 
 .none {
@@ -129,11 +130,11 @@
 }
 
 .scroll_area {
-  width: calc(10vw - 20px);
+  width: calc(calc(100vw - 40px) / 10) !important;
   margin-left: 10px;
   writing-mode: tb;
-  text-align: center;
-  font-size: 16px;
+  text-align: center !important;
+  font-size: 16px !important;
   font-weight: 450;
   letter-spacing: 1px;
 

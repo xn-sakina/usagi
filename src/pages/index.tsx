@@ -33,10 +33,13 @@ import {
   IconRightCircle,
   IconLeftCircle,
   IconRight,
+  IconBgColors,
 } from '@arco-design/web-react/icon'
 import { Footer } from '@/components/Footer'
 import { Title } from '@/components/Title'
 import { motion } from 'framer-motion'
+import { AddCircle } from './AddCircle'
+import { styled } from 'styled-components'
 
 const WIDTH = '90%'
 const MOVE_LEVEL = 2
@@ -141,6 +144,9 @@ export const Home: React.FC = () => {
     downloadFile({ url, filename: imgInfo?.filename, type: imgInfo?.type })
   }
 
+  // add circle
+  const [circleModalVisible, setCircleModalVisible] = useState(false)
+
   return (
     <div>
       <Title />
@@ -191,6 +197,23 @@ export const Home: React.FC = () => {
               status="success"
             >
               Save
+            </Button>
+          </Grid.Row>
+
+          <Typography.Title style={{ marginTop: 10 }} heading={6}>
+            Advanced Operations
+          </Typography.Title>
+
+          <Grid.Row className={styles.btn_line}>
+            <Button
+              type="dashed"
+              icon={<IconBgColors />}
+              onClick={() => {
+                setCircleModalVisible(true)
+              }}
+              disabled={!isDisabledSelectImage}
+            >
+              Add circle
             </Button>
           </Grid.Row>
 
@@ -257,7 +280,7 @@ export const Home: React.FC = () => {
             {loading ? (
               <Spin className={styles.center_loading} />
             ) : (
-              <div>
+              <div style={{ width: '100%' }}>
                 {cropperHeight && cropperHeight > 0 ? (
                   <div className={styles.cropper_box}>
                     <Cropper
@@ -400,6 +423,40 @@ export const Home: React.FC = () => {
           </div>
         </motion.div>
       </div>
+
+      <Modal
+        visible={circleModalVisible}
+        style={{
+          width: '90vw',
+        }}
+        okButtonProps={{
+          style: {
+            display: 'none',
+          },
+        }}
+        title='Add Circle'
+        escToExit={false}
+        maskClosable={false}
+        closable={false}
+        onCancel={() => {
+          setCircleModalVisible(false)
+        }}
+        cancelText="Close"
+      >
+        <div>
+          <AddCircle imageBase64={result} />
+          <AddCircleTips>
+            Please long press to save the image to your album
+          </AddCircleTips>
+        </div>
+      </Modal>
     </div>
   )
 }
+
+const AddCircleTips = styled.div`
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+  color: blue;
+`
